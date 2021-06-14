@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cbt.seckill.mapper.ItemStockDOMapper">
+    <resultMap id="BaseResultMap" type="com.cbt.seckill.dataobject.ItemStockDO">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="stock" property="stock" jdbcType="INTEGER"/>
+        <result column="item_id" property="itemId" jdbcType="INTEGER"/>
+    </resultMap>
+    <update id="decreaseStock">
+        update item_stock
+        set stock = stock - #{amount}
+        where item_id = #{itemId} and stock >= #{amount}
+    </update>
+</mapper>
